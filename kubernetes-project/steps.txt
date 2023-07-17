@@ -1,0 +1,59 @@
+1} order 3 ec2 instance
+	
+	a) jenkins (default-jre + jenkins)
+	b) ansible (python + ansible + docker)
+	c) webapp  (kubernetes cluster) => (docker+minikube)
+
+
+2} add plugin in jenkins
+
+	1} ssh agent
+
+3} in ansible server install ansible bash through
+
+	sudo apt-add-repository ppa:ansible/ansible -y
+	sudo apt update -y
+	sudo apt install ansible -y
+
+4} install minikube
+
+	#!/bin/bash
+
+# Update package list and install dependencies
+sudo apt update
+sudo apt install -y curl wget apt-transport-https virtualbox
+
+# Install kubectl
+sudo snap install kubectl --classic
+
+# Install Docker
+curl -fsSL https://get.docker.com | sudo sh
+sudo usermod -aG docker $USER
+
+# Download and install Minikube
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+rm minikube-linux-amd64
+
+# Start Minikube with --driver=none
+minikube start --driver=none
+
+# Configure kubectl to use Minikube's cluster
+mkdir -p $HOME/.kube $HOME/.minikube
+touch $HOME/.kube/config
+minikube update-context
+
+# Test Minikube setup
+kubectl cluster-info
+kubectl get nodes
+
+
+$ chmod +x install_minikube.sh
+$ ./install_minikube.sh
+
+
+5} 
+
+
+
+
