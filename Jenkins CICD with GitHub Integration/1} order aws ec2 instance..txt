@@ -1,0 +1,54 @@
+1} order aws ec2 instance.
+
+2} install jenkins
+
+3} create new jenkins project
+
+	add github link.
+
+	save and apply
+
+4}  now follow git hub readmi.txt file commands
+
+5} now install docker 
+
+6} Create Docker file 
+
+7} docker build -t node.js-app
+
+8} sudo usermod -a -G docker $user
+
+9} docker run -d --name=node.js-app -p 8000:8000
+
+	check on browser your code is running or not on 8000 port
+
+	code is work then kill your docker container
+
+10} open jenkins configure project
+
+11} add build steps execute shell
+
+	sudo usermod -a -G docker jenkins
+
+	sudo systemctl restart jenkins
+
+	docker build . -t node.js-app
+	
+	docker run -d --name node.js-app -p 8000:8000 node.js-app
+
+now build your jenkins project.
+
+now install plugin to automatic run your jenkins job when developer push the code on git repository.
+
+	plugin name is github integration
+
+	go to git hub settings and order gpg keys 
+
+	go to github repository setting find webhooks and add webhooks add jenkins playload 	url http://192.168.0.2:8000/github-webhook/
+
+	now in jenkins configure your project and select option github hook triger option 
+
+and then applly and save and build
+
+	
+	
