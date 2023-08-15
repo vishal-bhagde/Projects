@@ -18,7 +18,7 @@
 
 8} sudo usermod -a -G docker $user
 
-9} docker run -d --name=node.js-app -p 8000:8000
+9} sudo docker run -d --name=node-app -p 8000:8000 b366654150c4
 
 	check on browser your code is running or not on 8000 port
 
